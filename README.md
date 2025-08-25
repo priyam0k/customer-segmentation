@@ -38,7 +38,7 @@ To replicate this analysis, please follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/insurance-customer-segmentation.git](https://github.com/your-username/insurance-customer-segmentation.git)
+    git clone [https://github.com/priyam0k/insurance-customer-segmentation.git](https://github.com/priyam0k/insurance-customer-segmentation.git)
     cd insurance-customer-segmentation
     ```
 
