@@ -1,34 +1,40 @@
-# Customer Segmentation using Unsupervised Learning
+# Advanced Customer Segmentation for Insurance Analytics
 
 ## 1. Project Overview
 
-This project applies unsupervised machine learning techniques to segment a dataset of insurance policyholders. The primary objective is to transform raw customer data into actionable business intelligence by identifying distinct customer groups based on shared characteristics. By leveraging **K-Means clustering** and **Principal Component Analysis (PCA)**, this analysis provides a data-driven framework for developing targeted marketing strategies, improving customer retention, and informing product development.
+This project presents a comprehensive, end-to-end data science workflow for segmenting insurance policyholders using unsupervised machine learning. The core objective is to move beyond traditional, monolithic marketing and develop a nuanced, data-driven strategy. By identifying distinct customer personas, this analysis provides a framework to enhance customer engagement, reduce churn, and guide strategic business decisions in product development and risk management.
+
+The analysis leverages a combination of **K-Means clustering**, **Hierarchical Clustering**, and **Principal Component Analysis (PCA)** to transform a raw dataset into actionable, high-value business intelligence.
 
 ---
 
 ## 2. Methodology
 
-The analysis was conducted entirely in a Jupyter Notebook (`customer_segmentation_analysis.ipynb`) using Python and a suite of data science libraries.
+The analysis was conducted in a single Jupyter Notebook (`customer_segmentation_analysis.ipynb`) and follows a structured data science lifecycle.
 
-* **Data Source:** An anonymized insurance dataset sourced from a public repository.
-* **Libraries:** Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn.
+* **Data Source:** An anonymized insurance dataset from a public GitHub repository.
+* **Libraries:** Python, Pandas, Scikit-learn, Matplotlib, Seaborn, Plotly, SciPy.
 * **Workflow:**
-    1.  **Data Cleaning & EDA:** The dataset was loaded, inspected for quality, and explored to understand the distribution and correlation of key features like `age`, `bmi`, and `charges`.
-    2.  **Feature Preprocessing:** Categorical features (e.g., `sex`, `smoker`) were one-hot encoded, and all numerical features were standardized using `StandardScaler` to prepare the data for the distance-based clustering algorithm.
-    3.  **Dimensionality Reduction:** PCA was used to reduce the feature space to two principal components, enabling effective visualization of the customer segments.
-    4.  **Model Development:** The **Elbow Method** was used to determine the optimal number of clusters for the K-Means algorithm. A final model was then trained to segment the customers.
-    5.  **Cluster Profiling:** The resulting cluster labels were mapped back to the original data to analyze the mean characteristics of each segment, allowing for the creation of detailed customer personas.
+    1.  **Exploratory Data Analysis (EDA):** The dataset was inspected for quality and visualized using histograms, correlation matrices, and pair plots to uncover initial patterns and relationships.
+    2.  **Feature Engineering:** New categorical features (`age_group`, `bmi_category`) were engineered from continuous variables to help the model identify clearer segment boundaries.
+    3.  **Data Preprocessing:** All categorical features were one-hot encoded, and the resulting numerical dataset was standardized using `StandardScaler` to ensure all features contributed equally to the clustering models.
+    4.  **Dimensionality Reduction:** PCA was applied to reduce the feature space to two principal components, enabling effective 2D visualization and reducing computational noise.
+    5.  **Model Selection & Validation:** A dual-method approach was used to determine the optimal number of clusters (*k*):
+        * **The Elbow Method** identified the point of diminishing returns for cluster compactness.
+        * **Silhouette Score Analysis** quantitatively measured cluster separation, confirming the optimal *k*.
+    6.  **Alternative Modeling:** Hierarchical Clustering with a dendrogram was used as a secondary method to validate the cluster structure.
+    7.  **Profiling & Visualization:** The final cluster labels were mapped back to the original data to create detailed profiles. The segments were visualized using interactive scatter plots, comparative bar charts, and a holistic radar chart.
 
 ---
 
-## 3. Key Findings: Customer Personas
+## 3. Key Findings: The Four Core Personas
 
-The analysis successfully identified four distinct customer segments:
+The analysis successfully identified four distinct and commercially relevant customer personas:
 
-* **Cluster 0: Low-Cost, Healthy Non-Smokers:** This is the largest segment, characterized by the lowest average insurance charges. They are non-smokers with a moderate BMI and represent a low-risk, high-value customer base.
-* **Cluster 1: High-Cost, High-Risk Smokers:** This group has the highest average insurance charges by a significant margin. They are predominantly smokers, often with a higher BMI, representing a high-risk, high-cost segment.
-* **Cluster 2: Mid-Cost, Mid-Risk Individuals:** This segment has moderate insurance charges. They are older on average and have a higher BMI but are non-smokers. They represent a stable, predictable customer group.
-* **Cluster 3: Young, Healthy Individuals:** This group consists of the youngest customers with the lowest average BMI and number of children. Their insurance charges are relatively low, making them a key target for long-term customer value.
+* **Persona 0: Healthy & Low-Cost Non-Smokers:** A low-risk, high-value segment characterized by a healthy BMI, no smoking habits, and the lowest average insurance charges. This is a core group for retention strategies.
+* **Persona 1: High-Risk, High-Cost Smokers:** This group is defined by high-cost claims, a high BMI, and a near-universal smoking habit. They represent a significant risk and cost factor for the business.
+* **Persona 2: Mid-Risk Families:** This segment consists of older, non-smoking individuals with a higher BMI and more children. Their moderate insurance charges make them a stable and predictable customer base.
+* **Persona 3: Young & Healthy Individuals:** The youngest segment with a low BMI and few dependents. Their low charges and long-term potential make them a prime target for acquisition and future cross-selling.
 
 ---
 
@@ -38,7 +44,7 @@ To replicate this analysis, please follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/priyam0k/insurance-customer-segmentation.git](https://github.com/priyam0k/insurance-customer-segmentation.git)
+    git clone [https://github.com/your-username/insurance-customer-segmentation.git](https://github.com/priyam0k/insurance-customer-segmentation.git)
     cd insurance-customer-segmentation
     ```
 
@@ -51,15 +57,15 @@ To replicate this analysis, please follow these steps:
     ```bash
     jupyter notebook customer_segmentation_analysis.ipynb
     ```
-    This will open the notebook in your browser, allowing you to execute the code cells and view the analysis step-by-step.
+    This will open the notebook in your browser, allowing you to execute the code cells and view the complete analysis.
 
 ---
 
 ## 5. Business Impact
 
-The personas identified in this analysis provide a clear roadmap for strategic business actions:
+The personas developed in this project provide a clear roadmap for data-driven decision-making:
 
-* **Personalized Marketing:** Develop tailored campaigns that speak to the specific needs of each segment (e.g., wellness programs for Cluster 1, family-focused plans for Cluster 2).
-* **Improved Retention:** Design proactive retention strategies for the high-value, low-risk customers in Cluster 0.
-* **Product Development:** Use insights from the segments to create new, relevant insurance products (e.g., affordable entry-level plans for Cluster 3).
-* **Risk Management:** Better understand and price risk by recognizing the distinct characteristics of high-cost segments like Cluster 1.
+* **Personalized Marketing:** Craft campaigns that resonate with each persona's unique profile (e.g., wellness incentives for Persona 1, family-oriented benefits for Persona 2).
+* **Strategic Retention:** Develop loyalty programs and proactive outreach for the high-value customers in Persona 0.
+* **Customer Acquisition:** Target Persona 3 with affordable, entry-level products designed to capture long-term value.
+* **Risk & Pricing Optimization:** Use the insights from high-risk segments like Persona 1 to inform more accurate underwriting and pricing models.
